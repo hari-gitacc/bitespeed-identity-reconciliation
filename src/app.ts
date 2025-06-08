@@ -4,6 +4,8 @@ import cors from 'cors';
 import helmet from 'helmet';
 import * as dotenv from 'dotenv';
 import { identify } from './controllers/identityController';
+import swaggerUi from 'swagger-ui-express';
+import { swaggerSpec } from './config/swagger';
 
 
 
@@ -18,6 +20,62 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+/**
+ * @swagger
+ * /identify:
+ *   post:
+ *     summary: Identify and reconcile customer contact
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 example: mcfly@hillvalley.edu
+ *               phoneNumber:
+ *                 type: string
+ *                 example: "123456"
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 contact:
+ *                   type: object
+ *                   properties:
+ *                     primaryContatctId:
+ *                       type: integer
+ *                       example: 1
+ *                     emails:
+ *                       type: array
+ *                       items:
+ *                         type: string
+ *                       example: ["lorraine@hillvalley.edu", "mcfly@hillvalley.edu"]
+ *                     phoneNumbers:
+ *                       type: array
+ *                       items:
+ *                         type: string
+ *                       example: ["123456"]
+ *                     secondaryContactIds:
+ *                       type: array
+ *                       items:
+ *                         type: integer
+ *                       example: [23]
+ *             example:
+ *               contact:
+ *                 primaryContatctId: 1
+ *                 emails: ["lorraine@hillvalley.edu", "mcfly@hillvalley.edu"]
+ *                 phoneNumbers: ["123456"]
+ *                 secondaryContactIds: [23]
+ */
 
 
 // Health check endpoint
