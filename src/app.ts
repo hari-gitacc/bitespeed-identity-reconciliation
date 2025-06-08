@@ -88,6 +88,21 @@ app.post('/identify', (req, res, next) => {
     identify(req, res, next).catch(next);
 });
 
+app.get('/', (req, res) => {
+    res.status(200).json({
+        message: "🔗 Bitespeed Identity Reconciliation API",
+        version: "1.0.0",
+        documentation: "/api-docs",
+        endpoints: {
+            "GET /": "This welcome message",
+            "GET /health": "Health check",
+            "POST /identify": "Identify and reconcile customer contact",
+            "GET /api-docs": "Interactive Swagger documentation"
+        },
+        quickStart: "Visit /api-docs for interactive API testing"
+    });
+});
+
 // 404 handler
 app.use((req, res) => {
     res.status(404).json({ error: 'Endpoint not found' });
