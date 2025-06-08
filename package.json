@@ -12,14 +12,8 @@
     "prisma:push": "prisma db push",
     "prisma:seed": "ts-node prisma/seed.ts"
   },
-  "keywords": [
-    "identity-resolution",
-    "customer-data",
-    "typescript",
-    "prisma",
-    "postgresql"
-  ],
-  "author": "Hariprasanth S",
+  "keywords": ["identity-resolution", "customer-data", "typescript", "prisma", "postgresql"],
+  "author": "Your Name",
   "license": "MIT",
   "description": "Identity reconciliation service that links customer contacts across multiple purchases using email and phone number matching",
   "dependencies": {
@@ -31,18 +25,18 @@
     "helmet": "^8.1.0",
     "joi": "^17.13.3",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1"
-  },
-  "devDependencies": {
+    "swagger-ui-express": "^5.0.1",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/joi": "^17.2.2",
     "@types/node": "^22.15.30",
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.8",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
     "nodemon": "^3.1.10",
     "prisma": "^6.9.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "ts-node": "^10.9.2"
   }
 }
