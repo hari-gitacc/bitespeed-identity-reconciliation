@@ -1,21 +1,27 @@
 {
   "name": "bitespeed-identity-reconciliation",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "dist/app.js",
   "scripts": {
     "dev": "nodemon --exec ts-node src/app.ts",
-    "build": "tsc",
-    "start": "node dist/app.ts",
+    "build": "npx prisma generate && tsc",
+    "start": "node dist/app.js",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:studio": "prisma studio",
     "prisma:push": "prisma db push",
     "prisma:seed": "ts-node prisma/seed.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "keywords": [
+    "identity-resolution",
+    "customer-data",
+    "typescript",
+    "prisma",
+    "postgresql"
+  ],
+  "author": "Hariprasanth S",
+  "license": "MIT",
+  "description": "Identity reconciliation service that links customer contacts across multiple purchases using email and phone number matching",
   "dependencies": {
     "@prisma/client": "^6.9.0",
     "cors": "^2.8.5",
